@@ -6,8 +6,8 @@ import edu_icon_dark from './edu-icon-dark.png';
 import project_icon from './project-icon.png';
 import project_icon_dark from './project-icon-dark.png';
 import vscode from './vscode.png';
-import firebase from './firebase.png';
-import figma from './figma.png';
+import postman from './postman.png';
+import laravel from './laravel.png';
 import git from './git.png';
 import mongodb from './mongodb.png';
 import right_arrow_white from './right-arrow-white.png';
@@ -45,8 +45,8 @@ export const assets = {
     project_icon,
     project_icon_dark,
     vscode,
-    firebase,
-    figma,
+    postman,
+    laravel,
     git,
     mongodb,
     right_arrow_white,
@@ -78,23 +78,23 @@ export const assets = {
 
 export const workData = [
     {
-        title: 'Frontend project',
-        description: 'Creative Design',
+        title: 'Subscription Tracker API',
+        description: 'Backend Logic with Node.js',
         bgImage: '/work-1.png',
     },
     {
-        title: 'Geo based app',
-        description: 'Mobile App',
+        title: 'Authentication System',
+        description: 'Server-side Logic Node.js',
         bgImage: '/work-2.png',
     },
     {
-        title: 'Photography site',
+        title: 'Creative Portfolio',
         description: 'Web Design',
         bgImage: '/work-3.png',
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
+        title: 'Activity Tracker App',
+        description: 'Web app with PHP',
         bgImage: '/work-4.png',
     },
 ]
@@ -113,5 +113,5 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+    assets.vscode, assets.postman, assets.mongodb, assets.laravel, assets.git
 ];

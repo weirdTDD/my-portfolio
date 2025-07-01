@@ -38,7 +38,7 @@ const Contact = () => {
         Lets Connect!
       </h4>
       <h2 className='text-center text-5xl font-Ovo'>Get in touch </h2>
-      <p className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>I'd love to hear from you! If you have questions, comments, or feedback, please use from below.</p>
+      <p className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>I'd love to hear from you! If you have questions, comments, or feedback, kindly use form below.</p>
 
         <form onSubmit={onSubmit} className='max-w-2xl mx-auto'>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 mb-8'> 
