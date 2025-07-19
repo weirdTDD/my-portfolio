@@ -81,21 +81,25 @@ export const workData = [
         title: 'Subscription Tracker API',
         description: 'Backend Logic with Node.js',
         bgImage: '/work-1.png',
+        link: 'https://github.com/weirdTDD/subscription-tracker-api',
     },
     {
         title: 'Authentication System',
         description: 'Server-side Logic Node.js',
         bgImage: '/work-2.png',
+        link: 'https://github.com/weirdTDD/RESP-PORTFOLIO' // Example link, replace with actual if needed
     },
     {
         title: 'Creative Portfolio',
         description: 'Web Design',
         bgImage: '/work-3.png',
+        link: 'https://morhe-landing-page.netlify.app/',
     },
     {
         title: 'Activity Tracker App',
         description: 'Web app with PHP',
         bgImage: '/work-4.png',
+        link: 'https://github.com/weirdTDD/Activity-Tracker',
     },
 ]
 
@@ -109,7 +113,7 @@ export const serviceData = [
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript ES6+, React Js, Node Js, Python, PHP' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'HND in Building Technology' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 real-world projects' }
 ];
 
 export const toolsData = [
