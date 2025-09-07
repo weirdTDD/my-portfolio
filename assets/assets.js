@@ -79,28 +79,47 @@ export const assets = {
 export const workData = [
     {
         title: 'Subscription Tracker API',
-        description: 'Backend Logic with Node.js',
+        description: 'Backend Logic with NodeJS, EXpressJS & MongoDB',
         bgImage: '/work-1.png',
         link: 'https://github.com/weirdTDD/subscription-tracker-api',
     },
     {
-        title: 'Authentication System',
-        description: 'Server-side Logic Node.js',
+        title: 'Construction Website',
+        description: 'Landing Page built with React/ Typescrpit & Vite',
         bgImage: '/work-2.png',
-        link: 'https://github.com/weirdTDD/RESP-PORTFOLIO' // Example link, replace with actual if needed
-    },
-    {
-        title: 'Creative Portfolio',
-        description: 'Web Design',
-        bgImage: '/work-3.png',
-        link: 'https://morhe-landing-page.netlify.app/',
+        link: 'https://morhecons-group.vercel.app'
     },
     {
         title: 'Activity Tracker App',
-        description: 'Web app with PHP',
+        description: 'PHP app for assigning and tracking activties with Bootstrap for styling ',
         bgImage: '/work-4.png',
         link: 'https://github.com/weirdTDD/Activity-Tracker',
     },
+    {
+        title: 'Travel & Camping Website',
+        description: 'Travel app UI built with React/ NextJS & Typescript',
+        bgImage: '/work-3.png',
+        link: 'https://exploresghana.vercel.app/',
+    },
+    {
+        title: 'Laravel 12 Crud api',
+        description: 'Basic routing with Laravel and CSS for stlying',
+        bgImage: '/work-5.png',
+        link: 'https://github.com/weirdTDD/',
+    },
+    {
+        title: 'Modern Portfolio',
+        description: 'Modern Portfolio design with NextJS, TailwindCSS and Framer Motion',
+        bgImage: '/work-6.png',
+        link: 'https://my-portfolio-morhe.vercel.app/',
+    },
+    {
+        title: 'Creative Portfolio',
+        description: 'Well animated design with Vanilla HTML, CSS, JavaScript',
+        bgImage: '/work-7.png',
+        link: 'https://morhe-landing-page.netlify.app/',
+    }
+    
 ]
 
 export const serviceData = [

@@ -9,7 +9,7 @@ const Work = ({isDarkmode}) => {
   const [showAll, setShowAll] = useState(false)
 
   //determine how many projects to innitally show
-  const initialProjects = 2
+  const initialProjects = 4
   const visibleProjects = showAll ? workData : workData.slice(0, initialProjects)
   const MotionLink = motion(Link);
 
@@ -46,7 +46,7 @@ const Work = ({isDarkmode}) => {
       <motion.div 
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
-      transition={{ delay: 0.9, duration: 0.6}}
+      transition={{ delay: 0.9, duration: 0.6}} 
       className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-10 gap-6 justify-center dark:text-black'>
         {visibleProjects.map((project, index)=>(
             <MotionLink 
@@ -60,7 +60,7 @@ const Work = ({isDarkmode}) => {
             className={`aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group ${!project.link? 'pointer-events-none' : ''}`}
             style={{backgroundImage:`url(${project.bgImage})` }}>
 
-              <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7'>
+              <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 '>
                 <div>
                     <h2 className='font-semibold'>{project.title}</h2>
                     <p className='text-sm text-gray-700'>{project.description}</p>

@@ -42,13 +42,13 @@ const Services = ({isDarkmode}) => {
         whileInView={{opacity: 1}}
         transition={{ duration: 0.6, delay:0.9}}
 
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-10 justify-center">
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-10 justify-center ">
        {serviceData.map(({icon, title, description, link},index)=>(
         <motion.div 
         
         whileHover={{scale:1.05}}
 
-        key={index} className='border boader-gray-300 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover hover:-translate-y-1 transition  duration-500 hover:shadow-lg dark:border-white  dark:hover:shadow-white dark:hover:bg-darkHover'>
+        key={index} className='border boader-gray-300 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover hover:-translate-y-1 transition  duration-500 hover:shadow-lg dark:border-white  dark:hover:shadow-white dark:hover:bg-white/5'>
             <Image src={icon} alt='' className='w-10' />
             <h3 className='text-lg my-4  text-gray-700 dark:text-white'>{title}</h3>
             <p className='text-sm text-gray-600 leading-5 dark:text-white/80'>{description}</p>
