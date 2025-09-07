@@ -40,11 +40,10 @@ const About = ({isDarkMode}) => {
             <Image src={assets.user_image} alt='user' className='w-full rounded-3xl'/>
         </motion.div>
         <div className='flex-1'>
-            <p className='mb-10 max-w-2xl font-Ovo'>I'm a motivated and detail-oriented Back-End 
-Developer with hands-on experience building 
-web applications using Python (Django), 
+            <p className='mb-10 max-w-2xl font-Ovo'>I'm a motivated and detail-oriented Web-Developer with focus on backend development and hands-on experience building 
+web applications using Python (Django), NodeJS (ExpressJS),
 Database Management Systems, and 
-JavaScript ES6+. Skilled in developing secure, 
+JavaScript ES6+ Frameworks and Libraries. Skilled in developing secure, 
 efficient, and scalable back-end systems with a 
 focus on data handling, API integration, and 
 server-side logic. I’m currently expanding 
