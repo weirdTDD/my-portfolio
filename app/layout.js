@@ -1,5 +1,6 @@
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
+import BlurryBlob from "@/components/animata/background/blurry-blob";
 
 const outfit = Outfit({
   subsets: ["latin"], weight: ["400", "500", "600", "700"]
@@ -21,6 +22,8 @@ export default function RootLayout({ children }) {
         className={`${outfit.className
         } ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-black dark:text-white`}
       >
+        {/*Background blobs*/}
+        <BlurryBlob firstBlobColor="bg-blue-400" secondBlobColor="bg-purple-400" />
         {children}
       </body>
     </html>
