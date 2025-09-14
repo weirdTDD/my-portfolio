@@ -5,7 +5,7 @@ export default function BlurryBlob() {
         {/* Blob 1 */}
         <div
           className="
-            absolute -right-32 -top-28 h-140 w-140 rounded-full blur-3xl filter animate-pop-blob
+            absolute -right-32 -top-28 h-140 w-120 rounded-full blur-3xl filter animate-pop-blob
             opacity-40 mix-blend-multiply
             bg-blue-400 dark:bg-blue-900
             shadow-[0_0_60px_rgba(59,130,246,0.6)] dark:shadow-none
@@ -14,7 +14,7 @@ export default function BlurryBlob() {
         {/* Blob 2 */}
         <div
           className="
-            absolute -left-40 -top-64 h-140 w-140 rounded-full blur-3xl filter animate-pop-blob
+            absolute -left-40 -top-64 h-140 w-120 rounded-full blur-3xl filter animate-pop-blob
             opacity-40 mix-blend-multiply
             bg-purple-400 dark:bg-purple-900
             shadow-[0_0_60px_rgba(147,51,234,0.6)] dark:shadow-none
