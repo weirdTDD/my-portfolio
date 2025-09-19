@@ -1,3 +1,4 @@
+
 export default function BlurryBlob() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
@@ -5,98 +6,56 @@ export default function BlurryBlob() {
         {/* Blob 1 */}
         <div
           className="
-            absolute -right-32 -top-28 h-140 w-120 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-blue-400 dark:bg-blue-900
-            shadow-[0_0_60px_rgba(59,130,246,0.6)] dark:shadow-none
+            absolute -right-16 -top-16 
+            h-40 w-40 sm:h-96 sm:w-96 
+            rounded-full blur-xl sm:blur-3xl 
+            filter animate-pop-blob
+            opacity-20 sm:opacity-40 mix-blend-multiply
+            transition-all duration-700 ease-in-out
+            bg-gradient-to-tr from-blue-300 to-blue-500 
+            dark:from-blue-800 dark:to-blue-900
+            shadow-[0_0_30px_rgba(59,130,246,0.3)] sm:shadow-[0_0_60px_rgba(59,130,246,0.6)] dark:shadow-none
           "
         />
+
         {/* Blob 2 */}
         <div
           className="
-            absolute -left-40 -top-64 h-140 w-120 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-purple-400 dark:bg-purple-900
-            shadow-[0_0_60px_rgba(147,51,234,0.6)] dark:shadow-none
+            absolute -left-16 -bottom-16 
+            h-40 w-40 sm:h-96 sm:w-96 
+            rounded-full blur-xl sm:blur-3xl 
+            filter animate-pop-blob
+            opacity-20 sm:opacity-40 mix-blend-multiply
+            transition-all duration-700 ease-in-out
+            bg-gradient-to-tr from-purple-300 to-purple-500 
+            dark:from-purple-800 dark:to-purple-900
+            shadow-[0_0_30px_rgba(147,51,234,0.3)] sm:shadow-[0_0_60px_rgba(147,51,234,0.6)] dark:shadow-none
           "
         />
 
+        {/* Extra blobs only on desktop */}
         <div
           className="
-            absolute -right-24 -top-28 h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
+            hidden md:block absolute right-72 -top-32
+            h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
             opacity-40 mix-blend-multiply
-            bg-blue-400 dark:bg-blue-900
+            transition-all duration-700 ease-in-out
+            bg-gradient-to-tr from-blue-300 to-blue-500 
+            dark:from-blue-800 dark:to-blue-900
             shadow-[0_0_60px_rgba(59,130,246,0.6)] dark:shadow-none
           "
         />
-        {/* Blob 4 */}
         <div
           className="
-            absolute -left-40 -top-64 h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
+            hidden md:block absolute left-72 top-40
+            h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
             opacity-40 mix-blend-multiply
-            bg-purple-400 dark:bg-purple-900
+            transition-all duration-700 ease-in-out
+            bg-gradient-to-tr from-purple-300 to-purple-500 
+            dark:from-purple-800 dark:to-purple-900
             shadow-[0_0_60px_rgba(147,51,234,0.6)] dark:shadow-none
           "
         />
-
-
-        <div
-          className="
-            absolute right-210 -top-72 h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-blue-400 dark:bg-blue-900
-            shadow-[0_0_60px_rgba(59,130,246,0.6)] dark:shadow-none
-          "
-        />
-        {/* Blob 6 */}
-        <div
-          className="
-            absolute left-210 -top-74 h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-purple-400 dark:bg-purple-900
-            shadow-[0_0_60px_rgba(147,51,234,0.6)] dark:shadow-none
-          "
-        />
-
-        <div
-          className="
-            absolute -left-42 -bottom-42 h-140 w-140 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-blue-400 dark:bg-blue-900
-            shadow-[0_0_60px_rgba(59,130,246,0.6)] dark:shadow-none
-          "
-        />
-        {/* Blob 8 */}
-        <div
-          className="
-            absolute -right-24 -bottom-74 h-120 w-120 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-purple-400 dark:bg-purple-900
-            shadow-[0_0_60px_rgba(147,51,234,0.6)] dark:shadow-none
-          "
-        />
-
-        
-
-        {/*Center Blue*/}
-        <div
-          className="
-            absolute right-240 top-72 h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-blue-400 dark:bg-blue-900
-            shadow-[0_0_60px_rgba(59,130,246,0.6)] dark:shadow-none
-          "
-        />
-        {/* Center Purple */}
-        <div
-          className="
-            absolute left-220 top-96 h-96 w-96 rounded-full blur-3xl filter animate-pop-blob
-            opacity-40 mix-blend-multiply
-            bg-purple-400 dark:bg-purple-900
-            shadow-[0_0_60px_rgba(147,51,234,0.6)] dark:shadow-none
-          "
-        />
-
       </div>
     </div>
   );
