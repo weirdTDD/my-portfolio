@@ -1,8 +1,47 @@
-# my-portfolio
-portfolio website
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TED's Professional Portfolio 
 
-## Getting Started
+A cutting-edge developer portfolio showcasing full-stack capabilities with modern web technologies. Features dynamic project presentations, interactive elements, and great folder structure.
+
+## ✨ Highlights
+
+### Professional Showcase
+- 10+ featured projects with detailed case studies
+- Skills matrix with technology proficiency levels
+- Interactive resume viewer with PDF download
+
+### Technical Prowess
+- Real-time dark/light theme system
+- Server-side contact form handling
+- Performance-optimized animations
+- MongoDB-integrated project analytics
+
+## 🛠 Tech Stack
+
+**Frontend:**
+- Next.js 14 (App Router)
+- React 18 (Concurrent Mode)
+- TypeScript
+- Tailwind CSS + CSS Modules
+- Framer Motion animations
+
+
+## 🌐 Deployment Options
+
+### Vercel (Recommended)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FweirdTDD%2Fmy-portfolio)
+
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch: `git checkout -b feat/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push branch: `git push origin feat/amazing-feature`
+5. Open pull request
+
+## 📄 License
+MIT License - see [LICENSE.md](LICENSE.md) for details
+
 
 First, run the development server:
 

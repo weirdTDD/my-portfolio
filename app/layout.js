@@ -13,7 +13,7 @@ const ovo = Ovo({
 export const metadata = {
   title: "Portfolio - Next",
   description: "",
-  viewport: "width=device-width,initial-scale=1",
+  viewport: "width=device-width,initial-scale=1nb",
 };
 
 export default function RootLayout({ children }) {
