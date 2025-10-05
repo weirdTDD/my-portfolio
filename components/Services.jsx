@@ -34,7 +34,7 @@ const Services = ({isDarkmode}) => {
         whileInView={{opacity: 1}}
         transition={{ duration: 0.5, delay:0.7}}
 
-      className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>I offer fullstack development services which including creative web design, API creation, database management, authentication, server-side logic, deployment, real-time features, and performance optimization.</motion.p>
+      className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>I offer fullstack web development services which including creative web design, API creation, database management, authentication, server-side logic, deployment, real-time features, and performance optimization.</motion.p>
 
       <motion.div 
 
