@@ -41,7 +41,7 @@ const Work = ({isDarkmode}) => {
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
       transition={{ delay: 0.7, duration: 0.5}}
-      className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>Welcome to my web development portfolio, explore a collection of projects showcasing my expertise not just in backend development but web development as a whole.</motion.p>
+      className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>Welcome to my web development portfolio, where you can explore a collection of projects showcasing my expertise not just in backend development but in Full-Stack Web Development as a whole.</motion.p>
 
       <motion.div 
       initial={{opacity: 0}}
