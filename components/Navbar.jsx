@@ -1,5 +1,4 @@
 import { assets } from '@/assets/assets'
-import { Siemreap } from 'next/font/google'
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 
