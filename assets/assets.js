@@ -85,7 +85,7 @@ export const workData = [
     },
     {
         title: 'Construction Website',
-        description: 'Landing Page built with React/ Typescrpit & Vite',
+        description: 'Modern website for a construction company built on ReactJs & Vite',
         bgImage: '/work-2.png',
         link: 'https://morhecons-group.vercel.app'
     },
@@ -102,10 +102,10 @@ export const workData = [
         link: 'https://exploresghana.vercel.app/',
     },
     {
-        title: 'Laravel 12 Crud api',
-        description: 'Basic routing with Laravel and CSS for stlying',
+        title: 'Inventory Management App',
+        description: 'Inventory tracking and dashboard built with NextJS/ React & Typescript',
         bgImage: '/work-5.png',
-        link: 'https://github.com/weirdTDD/',
+        link: 'https://inventory-app-ten-weld.vercel.app/',
     },
     {
         title: 'Modern Portfolio',
@@ -123,7 +123,7 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Creative Web Design', description: 'Creating aesthetically pleasing visuals that  appeals to users...', link: 'https://morhe-landing-page.netlify.app/' },
+    { icon: assets.web_icon, title: 'Creative Web Design', description: 'Creating aesthetically pleasing visuals that  appeals to users...', link: '' },
     { icon: assets.mobile_icon, title: 'API Development & Database Management', description: 'Creating REST APIs, designing schemas, writing queries, and optimizing performance...', link: '' },
     { icon: assets.ui_icon, title: 'Authentication & Security', description: 'Implementing login systems, token-based auth, and securing data...', link: '' },
     { icon: assets.graphics_icon, title: 'Deployment & DevOps', description: 'Setting up servers, CI/CD pipelines, and cloud hosting...', link: '' },
