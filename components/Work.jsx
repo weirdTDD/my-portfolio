@@ -9,7 +9,7 @@ const Work = ({isDarkmode}) => {
   const [showAll, setShowAll] = useState(false)
 
   //determine how many projects to innitally show
-  const initialProjects = 4
+  const initialProjects = 3
   const visibleProjects = showAll ? workData : workData.slice(0, initialProjects)
   const MotionLink = motion(Link);
 
@@ -47,7 +47,7 @@ const Work = ({isDarkmode}) => {
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
       transition={{ delay: 0.9, duration: 0.6}} 
-      className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-10 gap-6 justify-center dark:text-black'>
+      className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-6 justify-center dark:text-black'>
         {visibleProjects.map((project, index)=>(
             <MotionLink 
 
@@ -60,10 +60,10 @@ const Work = ({isDarkmode}) => {
             className={`aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative border border-gray-200 shadow-2xl cursor-pointer group ${!project.link? 'pointer-events-none' : ''}`}
             style={{backgroundImage:`url(${project.bgImage})` }}>
 
-              <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 '>
+              <div className='bg-white w-10/12 max-h-10/12  rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-4 flex items-center justify-between duration-500 group-hover:bottom-7 '>
                 <div>
                     <h2 className='font-semibold'>{project.title}</h2>
-                    <p className='text-sm text-gray-700'>{project.description}</p>
+                    <p className='md:text-sm text-xs text-gray-700'>{project.description}</p>
                 </div>
                   
                 <div className={`border rounded-full border-black w-9 aspect-square flex items-center justify-center cursor-pointer shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition ${!project.link ? 'opacity-50' : ''}`}>
