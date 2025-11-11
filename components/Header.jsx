@@ -33,7 +33,7 @@ const Header = () => {
         whileInView={{opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
         className='max-w-2xl mx-auto font-Ovo'>
-            I'm a FullStack Developer from Spintex, Accra-Ghana, with solid interest in building secure, scalable and well optimised Backend Systems. I have more than a year of experience in this field and I'm willing to learn more and contribute to open source projects while collaborating with other devlopers. 
+            I'm a FullStack Developer from Spintex, Accra-Ghana, with solid interest in building secure, scalable and well optimised web apps to improve user experience. I have more than a year of experience in this field and I'm willing to learn more and contribute to open source projects and collaborating with other developers. 
         </motion.p>
         
         <div className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
