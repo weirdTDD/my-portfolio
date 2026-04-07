@@ -4,35 +4,54 @@ const WorkTimeline = () => {
   const experiences = [
     {
       id: 1,
-      role: "Senior Product Designer",
-      company: "Acme Corp",
-      period: "2022 — Present",
-      type: "Full-time",
+      role: "Software Engineer",
+      company: "Agricom Assurance",
+      period: "March 2026 — Present",
+      type: "Remote",
       description: "Led end-to-end design for the company's flagship SaaS platform, owning the design system and driving a 40% improvement in user onboarding.",
-      skills: ["Figma", "Design Systems", "User Research", "Prototyping"]
+      skills: ["API Design", "Geospatial Analysis", "User Research"]
     },
     {
       id: 2,
-      role: "Product Designer",
-      company: "Bright Labs",
-      period: "2020 — 2022",
-      type: "Full-time",
+      role: "Software Engineer",
+      company: "Build Scitech",
+      period: "Dec 2025 — Feb 2026",
+      type: "Internship",
       description: "Collaborated with cross-functional teams to redesign the core mobile experience, reducing support tickets by 25%.",
-      skills: ["Mobile UX", "Mentorship", "Usability Testing"]
+      skills: ["Prototyping", "Mentorship", "Usability Testing"]
     },
     {
       id: 3,
-      role: "UI/UX Designer",
-      company: "Studio Nine",
-      period: "2019 — 2020",
+      role: "Full Stack Engineer",
+      company: "Prodigy InfoTech",
+      period: "Jan 2025 — Feb 2026",
+      type: "Internship",
+      description: "Built and maintained multiple project based applications from handling Authentication, E-commerce & Real-time featured products.",
+      skills: ["Web Sockets", "Microservices", "Design Architecture"]
+    },
+    {
+      id: 4,
+      role: "Frontend Developer",
+      company: "Cultigenix",
+      period: "Jul 2025 — Aug 2025",
       type: "Contract",
-      description: "Designed responsive web interfaces for 8+ client projects across fintech and e-commerce.",
-      skills: ["Web Design", "Fintech", "Agile", "HTML/CSS"]
+      description: "Built responsive web interfaces for client projects across Edtech and E-commerce.",
+      skills: ["Web Design", "Edtech", "Agile", "React", "TailwindCSS"]
     }
   ];
 
   return (
     <div className="min-h-screen py-12 px-6">
+
+        <div className='py-12 text-center my-4'>
+            <h2 className='text-5xl'>
+                Experiences
+            </h2>
+            <p className='text-lg md:w-xl mx-auto mt-4'>
+                These are current experiences and organizations I've contributed to over the past few years. 
+            </p>
+        </div>
+
       <div className="max-w-3xl mx-auto relative">
         
         {/* Main Vertical Line */}
