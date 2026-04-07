@@ -2,6 +2,7 @@ import { assets, infoList, toolsData } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'motion/react' 
+import WorkTimeline from './Experiences'
 
 const About = ({isDarkMode}) => {
   return (
@@ -93,6 +94,8 @@ AI-driven applications. </p>
                     ))}
                 </motion.ul>
         </div>
+
+        <WorkTimeline/>
       </motion.div>
 
     </motion.div>

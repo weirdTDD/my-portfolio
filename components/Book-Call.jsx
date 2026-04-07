@@ -1,82 +1,290 @@
-import React, { useState } from 'react';
-import { format, addDays, startOfToday } from 'date-fns';
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
-import { Button } from './ui/button';
+import React, { useState, useCallback } from 'react';
+import { format, addDays, startOfToday, isBefore, isWeekend,
+         startOfWeek, addMinutes, isSameDay, parse } from 'date-fns';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon,
+         Video, CheckCircle } from 'lucide-react';
 import { Calendar } from './ui/calendar';
 
+// ── Config ────────────────────────────────────────────────────────────────
+const SESSION_DURATION = 45; // minutes
+const DAYS_TO_SHOW = 7;
 
+// Mark specific times unavailable (fetched from your backend in production)
+const BLOCKED_SLOTS = ['09:00', '10:00', '14:00'];
 
+function generateSlots(date) {
+  const baseSlots = [
+    '09:00','09:45','10:00','10:45','11:30',
+    '13:00','13:45','14:00','14:45','15:30','16:15',
+  ];
+  const today = startOfToday();
+  const now = new Date();
 
+  // No slots on past dates or weekends
+  if (isBefore(date, today) || isWeekend(date)) return [];
 
+  return baseSlots
+    .filter(time => {
+      // On today, hide times already passed (+ 30 min buffer)
+      if (isSameDay(date, today)) {
+        const slotTime = parse(time, 'HH:mm', date);
+        return slotTime > addMinutes(now, 30);
+      }
+      return true;
+    })
+    .map(time => ({
+      time,
+      available: !BLOCKED_SLOTS.includes(time),
+    }));
+}
 
+function computeEndTime(startTime, durationMinutes) {
+  const base = parse(startTime, 'HH:mm', new Date());
+  return format(addMinutes(base, durationMinutes), 'HH:mm');
+}
 
+// Fake Google Meet link — replace with your backend call
+function generateMeetLink() {
+  const rand = () => Math.random().toString(36).slice(2, 5);
+  return `https://meet.google.com/${rand()}-${rand()}-${rand()}`;
+}
 
 export default function BookingPage() {
-  const [selectedDate, setSelectedDate] = useState(startOfToday());
-  
-  // Create 6 days for the horizontal view starting from today
-  const days = Array.from({ length: 6 }).map((_, i) => addDays(startOfToday(), i));
+  const today = startOfToday();
+  const [selectedDate, setSelectedDate] = useState(today);
+  const [weekOffset, setWeekOffset] = useState(0);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [booking, setBooking] = useState(null); // { date, slot, meetLink }
+
+  // ── Week strip ───────────────────────────────────────────────────────────
+  const weekBase = addDays(
+    startOfWeek(today, { weekStartsOn: 0 }),
+    weekOffset * 7
+  );
+  const weekDays = Array.from({ length: DAYS_TO_SHOW }, (_, i) =>
+    addDays(weekBase, i)
+  );
+
+  const handlePrevWeek = () => {
+    // Don't go before the week containing today
+    if (weekOffset > 0) setWeekOffset(w => w - 1);
+  };
+
+  // ── Date selection ───────────────────────────────────────────────────────
+  const handleSelectDate = useCallback((date) => {
+    if (!date || isBefore(date, today) || isWeekend(date)) return;
+    setSelectedDate(date);
+    setSelectedSlot(null);
+    setBooking(null);
+    // Sync week strip to show the chosen date
+    const targetWeek = startOfWeek(date, { weekStartsOn: 0 });
+    const todayWeek  = startOfWeek(today, { weekStartsOn: 0 });
+    const diff = Math.round(
+      (targetWeek - todayWeek) / (7 * 24 * 60 * 60 * 1000)
+    );
+    setWeekOffset(diff);
+  }, [today]);
+
+  // ── Jump to next available day ───────────────────────────────────────────
+  const jumpToNext = () => {
+    let d = addDays(selectedDate, 1);
+    for (let i = 0; i < 60; i++) {
+      if (!isWeekend(d) && !isBefore(d, today) && generateSlots(d).length) {
+        handleSelectDate(d);
+        return;
+      }
+      d = addDays(d, 1);
+    }
+  };
+
+  // ── Booking ──────────────────────────────────────────────────────────────
+  const handleBook = async () => {
+    // 🔌 Replace this block with your real API call:
+    // const res = await fetch('/api/book', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ date: selectedDate, slot: selectedSlot }),
+    // });
+    // const { meetLink } = await res.json();
+    const meetLink = generateMeetLink();
+
+    setBooking({ date: selectedDate, slot: selectedSlot, meetLink });
+    setSelectedSlot(null);
+  };
+
+  const slots = generateSlots(selectedDate);
+  const endTime = selectedSlot
+    ? computeEndTime(selectedSlot, SESSION_DURATION)
+    : null;
 
   return (
-    // Light mode: bg-white → Dark mode: dark:bg-black
-// Light mode: text-gray-500 → Dark mode: dark:text-gray-400
-<div className="max-w-5xl mx-auto p-8 bg-white dark:bg-slate-900/50 border-none rounded-xl shadow-sm dark:border-gray-700">
-      {/* Header Section */}
+    <div className="max-w-4xl mx-auto p-8 bg-white dark:bg-slate-900/50 rounded-xl shadow-sm">
+
+      {/* Header */}
       <div className="flex items-center gap-4 mb-8">
-        <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-700">
-          <CalendarIcon size={24} />
+        <div className="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-700">
+          <CalendarIcon size={22} />
         </div>
         <div>
-          <h1 className="text-2xl font-bold">1-on-1 Coaching Session</h1>
-          <p className="text-gray-500">45 min appointments • Google Meet</p>
+          <h1 className="text-2xl font-bold ">1-on-1 Coaching Session</h1>
+          <p className="dark:text-gray-100 text-gray-500 text-sm mt-4">
+            {SESSION_DURATION} min · Google Meet · Free cancellation 24h before
+          </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Left Side: Mini Calendar (Placeholder for library like react-day-picker) */}
-        <div className="col-span-1 border-r pr-4">
-          <h3 className="font-semibold mb-4 text-center">{format(selectedDate, 'MMMM yyyy')}</h3>
-          {/* Calendar Logic here */}
-          <div className="text-sm text-gray-400 italic text-center py-10 ">
-              <Calendar
-                    mode="single"
-                    selected={selectedDate}
-                    onSelect={setSelectedDate}
-                    className="rounded-lg border  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950! mx-auto"
-              />
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        {/* Mini Calendar */}
+        <div className="col-span-1 border-r pr-6">
+          <p className="font-semibold text-center mb-3 text-sm">
+            {format(selectedDate, 'MMMM yyyy')}
+          </p>
+          <Calendar
+            mode="single"
+            selected={selectedDate}
+            onSelect={handleSelectDate}
+            disabled={(d) => isBefore(d, today) || isWeekend(d)}
+            className="rounded-lg border dark:bg-gray-800/50 mx-auto text-sm"
+          />
         </div>
 
-        {/* Right Side: Horizontal Slots */}
+        {/*------------------- Right side ------------------------*/}
         <div className="col-span-2">
-          <div className="flex items-center justify-between mb-6">
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-900 "><ChevronLeft /></button>
-            
-            <div className="flex gap-4 overflow-x-hidden pb-2">
-              {days.map((day) => (
-                <button 
-                  key={day.toString()}
-                  onClick={() => setSelectedDate(day)}
-                  className={`flex flex-col items-center min-w-[80px] p-4 rounded-lg transition ${
-                    format(day, 'PP') === format(selectedDate, 'PP') 
-                    ? 'bg-blue-600 text-white' 
-                    : 'hover:bg-gray-100 dark:text-gray-50 text-gray-800'
-                  }`}
-                >
-                  <span className="text-xs uppercase">{format(day, 'eee')}</span>
-                  <span className="text-xl font-bold">{format(day, 'd')}</span>
-                </button>
-              ))}
+
+          {/* Week Strip */}
+          <div className="flex items-center gap-2 mb-6">
+            <button
+              onClick={handlePrevWeek}
+              disabled={weekOffset === 0}
+              className="p-1.5 rounded-full hover:bg-gray-100 disabled:opacity-30"
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            <div className="flex gap-2 overflow-hidden flex-1">
+              {weekDays.map((day) => {
+                const past     = isBefore(day, today);
+                const weekend  = isWeekend(day);
+                const isActive = isSameDay(day, selectedDate);
+                const disabled = past || weekend;
+                return (
+                  <button
+                    key={day.toISOString()}
+                    onClick={() => handleSelectDate(day)}
+                    disabled={disabled}
+                    className={`flex flex-col items-center flex-1 py-2 rounded-xl border text-xs transition
+                      ${isActive
+                        ? 'bg-blue-600 text-white border-blue-600'
+                        : disabled
+                          ? 'opacity-30 cursor-not-allowed border-transparent'
+                          : 'hover:bg-gray-50 dark:hover:bg-gray-800 border-gray-200 dark:border-gray-700'
+                      }`}
+                  >
+                    <span className="uppercase">{format(day, 'eee')}</span>
+                    <span className="text-lg font-semibold">{format(day, 'd')}</span>
+                  </button>
+                );
+              })}
             </div>
 
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-900"><ChevronRight /></button>
+            <button
+              onClick={() => setWeekOffset(w => w + 1)}
+              className="p-1.5 rounded-full hover:bg-gray-100"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
 
-          {/* Availability State */}
-          <div className="text-center py-20 bg-white/90 rounded-xl border border-dashed dark:bg-gray-800/50">
-            <p className="text-gray-500 mb-2">No availability during these days</p>
-            <button className="text-blue-600 font-medium">Jump to the next bookable date</button>
-          </div>
+          {/* Success Banner */}
+            {booking && (
+                <div className="bg-green-50 border border-green-200 rounded-xl p-5">
+                <div className="flex items-center gap-2 text-green-800 font-semibold mb-1">
+                    <CheckCircle size={18} /> Booking confirmed!
+                </div>
+                <p className="text-sm text-green-700">
+                    {format(booking.date, 'EEEE, MMMM d, yyyy')} ·{' '}
+                    {booking.slot} – {computeEndTime(booking.slot, SESSION_DURATION)}
+                </p>
+                <a
+                    href={booking.meetLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+                >
+                    <Video size={15} /> {booking.meetLink}
+                </a>
+                <div className="mt-3">
+                    <button
+                    onClick={() => { setBooking(null); setSelectedSlot(null); }}
+                    className="text-sm text-blue-600 hover:underline"
+                    >
+                    + Book another session
+                    </button>
+                </div>
+                </div>
+            )}
+
+          {/* Time Slots */}
+          {!booking && (
+            <>
+              {slots.length === 0 ? (
+                <div className="text-center py-16 border border-dashed rounded-xl">
+                  <p className="text-gray-500 mb-2 text-sm">No availability on this day</p>
+                  <button
+                    onClick={jumpToNext}
+                    className="text-blue-600 text-sm font-medium"
+                  >
+                    Jump to next bookable date →
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <p className="text-sm text-gray-500 mb-3">
+                    {format(selectedDate, 'EEEE, MMMM d')}
+                  </p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {slots.map(({ time, available }) => (
+                      <button
+                        key={time}
+                        disabled={!available}
+                        onClick={() => setSelectedSlot(
+                          selectedSlot === time ? null : time
+                        )}
+                        className={`py-2.5 rounded-xl border text-sm transition
+                          ${!available
+                            ? 'opacity-30 line-through cursor-not-allowed border-gray-200'
+                            : selectedSlot === time
+                              ? 'bg-blue-600 text-white border-blue-600'
+                              : 'hover:bg-blue-50 hover:border-blue-300 border-gray-200'
+                          }`}
+                      >
+                        {time}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Confirm panel */}
+                  {selectedSlot && (
+                    <div className="mt-5 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border">
+                      <h3 className="font-semibold text-sm mb-3">Confirm your booking</h3>
+                      <div className="space-y-1.5 text-sm text-gray-600 dark:text-gray-400">
+                        <p>📅 {format(selectedDate, 'EEEE, MMMM d, yyyy')}</p>
+                        <p>🕐 {selectedSlot} – {endTime} ({SESSION_DURATION} min)</p>
+                        <p>📹 Google Meet link sent on confirmation</p>
+                      </div>
+                      <button
+                        onClick={handleBook}
+                        className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-sm font-medium transition"
+                      >
+                        Book & get Google Meet link
+                      </button>
+                    </div>
+                  )}
+                </>
+              )}
+            </>
+          )}
+
         </div>
       </div>
     </div>
