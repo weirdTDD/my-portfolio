@@ -77,14 +77,14 @@ const Contact = () => {
                 initial={{x: -50, opacity: 0}}
                 whileInView={{x: 0, opacity: 1}}
                 transition={{ delay: 1, duration: 0.3}}
-                type='text' placeholder='Enter your name' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 dark:text-black dark:border-white/90' name='name'/>
+                type='text' placeholder='Enter your name' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950!  dark:border-white/20' name='name'/>
                   
               <motion.input 
               
                 initial={{x: 50, opacity: 0}}
                 whileInView={{x: 0, opacity: 1}}
                 transition={{ delay: 1.2, duration: 0.3}}
-              type='email' placeholder='Enter your email' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 dark:text-black dark:border-white/90'name='email'/>
+              type='email' placeholder='Enter your email' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950!  dark:border-white/20'name='email'/>
               
           </div>
           
@@ -93,7 +93,7 @@ const Contact = () => {
             initial={{y: 100, opacity: 0}}
             whileInView={{y: 0, opacity: 1}}
             transition={{ delay: 1.1, duration: 0.4}}
-            rows='6' placeholder='Enter your message' required className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6 dark:bg-darkHover/30 dark:text-black dark:border-white/90' name='message'>
+            rows='6' placeholder='Enter your message' required className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6 dark:bg-darkHover/30  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950! dark:border-white/20' name='message'>
               
           </motion.textarea>
 

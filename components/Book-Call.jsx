@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { format, addDays, startOfToday } from 'date-fns';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
+import { Button } from './ui/button';
+import { Calendar } from './ui/calendar';
+
 
 
 
@@ -34,8 +37,13 @@ export default function BookingPage() {
         <div className="col-span-1 border-r pr-4">
           <h3 className="font-semibold mb-4 text-center">{format(selectedDate, 'MMMM yyyy')}</h3>
           {/* Calendar Logic here */}
-          <div className="text-sm text-gray-400 italic text-center py-10 border-2 border-dashed rounded">
-             Mini Calendar UI Goes Here
+          <div className="text-sm text-gray-400 italic text-center py-10 ">
+              <Calendar
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    className="rounded-lg border  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950! mx-auto"
+              />
           </div>
         </div>
 
@@ -65,7 +73,7 @@ export default function BookingPage() {
           </div>
 
           {/* Availability State */}
-          <div className="text-center py-20 bg-white/90 rounded-xl border border-dashed">
+          <div className="text-center py-20 bg-white/90 rounded-xl border border-dashed dark:bg-gray-800/50">
             <p className="text-gray-500 mb-2">No availability during these days</p>
             <button className="text-blue-600 font-medium">Jump to the next bookable date</button>
           </div>
