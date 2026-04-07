@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import { motion } from 'motion/react'
+import BookingPage from './Book-Call'
 
 const Contact = () => {
 
@@ -61,6 +62,8 @@ const Contact = () => {
           className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>
           I'd love to hear from you! If you have questions, comments, or feedback,<br/> kindly use the form below.
         </motion.p>
+
+          <BookingPage />
 
         <motion.form 
           
