@@ -48,7 +48,7 @@ const Services = ({isDarkmode}) => {
         
         whileHover={{scale:1.05}}
 
-        key={index} className='border boader-gray-300 rounded-lg px-8 py-12 cursor-pointer shadow-2xl hover:bg-lightHover hover:-translate-y-1 transition  duration-500 hover:shadow-lg dark:border-white/40  dark:hover:shadow-white/40 dark:hover:bg-white/20 bg-white/5'>
+        key={index} className='border border-gray-400 rounded-lg px-8 py-12 cursor-pointer shadow-2xl hover:bg-lightHover hover:-translate-y-1 transition  duration-500 hover:shadow-lg dark:border-white/40  dark:hover:shadow-white/40 dark:hover:bg-white/20 bg-white/5'>
            <div className='flex items-center gap-2 h-16 mb-3'>
               <Image src={icon} alt='' className='w-10 flex items-start' />
               <h3 className='text-lg my-4  text-gray-700 dark:text-white'>{title}</h3>
