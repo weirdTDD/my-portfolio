@@ -48,16 +48,16 @@ const WorkTimeline = () => {
   return (
     <div className="min-h-screen py-12 px-6">
       <div className="py-12 text-center my-4">
-        <h2 className="md:text-5xl text-3xl">Experiences</h2>
+        <h2 className="md:text-5xl font-semibold text-4xl">My Experiences</h2>
         <p className="text-[16px] md:text-lg md:w-xl mx-auto mt-4">
           These are current experiences and organizations I've contributed to
           over the past few years.
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto relative">
+      <div className="max-w-3xl md:mx-auto relative mx-0 ">
         {/* Main Vertical Line */}
-        <div className="absolute left-[9px] top-2 bottom-2 w-[2px] bg-blue-500" />
+        <div className="absolute left-[9px] top-2 bottom-2 w-[2px] bg-blue-500"/>
 
         <div className="space-y-10">
           {experiences.map((exp) => (
@@ -81,7 +81,7 @@ const WorkTimeline = () => {
                   </div>
 
                   {/* Job Type Badge */}
-                  <div className="">
+                  <div className="sm:block hidden">
                    
 
                     <span className="px-2 py-0.5 flex items-center bg-blue-600 border border-gray-500 text-white text-[10px] text-nowrap font-semibold rounded-lg uppercase ">

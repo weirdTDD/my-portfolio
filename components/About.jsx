@@ -128,7 +128,11 @@ const About = ({ isDarkMode }) => {
           </div>
         </div>
       </motion.div>
-      <WorkTimeline />
+      <div className="px-0!">
+        
+      </div>
+       
+     
     </motion.div>
   );
 };
