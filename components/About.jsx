@@ -36,7 +36,7 @@ const About = ({ isDarkMode }) => {
         transition={{ duration: 0.8 }}
         className="flex w-full flex-col items-center gap-20 my-20"
       >
-        <div className="flex flex-col md:flex-row items-center gap-x-10">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-x-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -50,8 +50,8 @@ const About = ({ isDarkMode }) => {
             />
           </motion.div>
 
-          <div className="flex-1">
-            <p className="mb-4 max-w-2xl font-Ovo">
+          <div className="flex items-center justify-center ">
+            <p className="mb-4 max-w-lg font-Ovo px-10">
               I'm a motivated and detail-oriented Web-Developer with focus on
               backend development and hands-on experience building web
               applications with multiple Frameworks and Libraries.
