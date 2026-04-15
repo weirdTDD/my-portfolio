@@ -39,7 +39,7 @@ const Contact = () => {
     whileInView={{opacity: 1}}
     transition={{duration: 1}}
     >
-      <div id='contact' className='w-full px-[12%] py-10 scroll-mt-20 bg-none bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none' >
+      <div id='contact' className='max-w-6xl mx-auto px-[12%] py-10 scroll-mt-20 bg-none bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none' >
         <motion.h4 
         
         initial={{y: -20, opacity: 0}}
@@ -70,7 +70,7 @@ const Contact = () => {
           initial={{opacity: 0}}
           whileInView={{opacity: 1}}
           transition={{ delay: 0.9, duration: 0.5}}
-          onSubmit={onSubmit} className='max-w-2xl mx-auto'>
+          onSubmit={onSubmit} className='mx-auto'>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 mb-8'> 
               <motion.input 
                 

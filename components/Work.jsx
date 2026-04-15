@@ -54,7 +54,7 @@ const Work = ({ isDarkmode }) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-6 justify-center dark:text-black"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-6 justify-center dark:text-black max-w-5xl mx-auto"
       >
         {visibleProjects.map((project) => (
           <MotionLink
@@ -64,14 +64,14 @@ const Work = ({ isDarkmode }) => {
             href={project.link || "#"} // use "#" when no link (or conditionally render a div)
             target={project.link ? "_blank" : "_self"}
             rel={project.link ? "noopener noreferrer" : undefined}
-            className={`aspect-square bg-no-repeat bg-cover bg-center bg-white/10 rounded-xl relative border border-gray-200 shadow-2xl cursor-pointer group ${
+            className={`aspect-square bg-no-repeat bg-cover bg-center bg-black/20 backdrop-blur-md rounded-xl relative border border-gray-200 shadow-2xl cursor-pointer group ${
               !project.link ? "pointer-events-none" : ""
             }`}
             // Remove the broken backgroundImage – it's not needed
           >
             <div className="relative w-full h-full">
               {/* Image Card – fills most of the square */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-11/12 h-[55%] xl:h-[65%] rounded-lg bg-white overflow-hidden shadow-md">
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-23/24 h-[55%] xl:h-[65%] rounded-lg bg-white overflow-hidden shadow-md">
                 <Image
                   src={project.bgImage}
                   alt={project.title}
@@ -82,7 +82,7 @@ const Work = ({ isDarkmode }) => {
               </div>
 
               {/* Desc Card */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 xl:h-[25%] h-[30%] bg-white rounded-lg py-3 px-4 flex items-center justify-between duration-500 group-hover:bottom-7 shadow-md">
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-23/24 xl:h-[25%] h-[30%] bg-white rounded-lg py-2 px-4 flex items-center justify-between duration-500 group-hover:bottom-7 shadow-md">
                 <div>
                   <h2 className="font-semibold">{project.title}</h2>
                   <p className="md:text-sm text-xs text-gray-700 line-clamp-2">
@@ -118,7 +118,7 @@ const Work = ({ isDarkmode }) => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.5 }}
             className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px]
-           border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover hover:-translate-y-1  duration-500 dark:text-white dark:border-white dark:hover:shadow-white dark:hover:shadow-lg"
+           border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover hover:-translate-y-0.5  duration-500 dark:text-white dark:border-white dark:hover:shadow-white dark:hover:shadow-lg"
             onClick={(e) => {
               e.preventDefault();
               setShowAll(!showAll);

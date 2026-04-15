@@ -51,7 +51,7 @@ const About = ({ isDarkMode }) => {
           </motion.div>
 
           <div className="flex items-center justify-center ">
-            <p className="mb-4 max-w-lg font-Ovo px-10">
+            <p className="mb-4 max-w-lg font-Ovo md:px-10">
               I'm a motivated and detail-oriented Web-Developer with focus on
               backend development and hands-on experience building web
               applications with multiple Frameworks and Libraries.
@@ -127,11 +127,7 @@ const About = ({ isDarkMode }) => {
             </motion.ul>
           </div>
         </div>
-      </motion.div>
-      <div className="px-0!">
-        
-      </div>
-       
+      </motion.div>     
      
     </motion.div>
   );

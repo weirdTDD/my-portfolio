@@ -117,7 +117,7 @@ export default function BookingPage() {
     : null;
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white dark:bg-slate-900/50 rounded-xl shadow-sm">
+    <div className="max-w-4xl mx-auto p-8 bg-white/50 backdrop-blur-sm dark:bg-slate-900/50 border rounded-xl shadow-sm">
 
       {/* Header */}
       <div className="flex items-center gap-4 mb-8">
@@ -132,11 +132,11 @@ export default function BookingPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="flex flex-col md:flex-row items-center gap-6">
 
         {/* Mini Calendar */}
-        <div className="col-span-1 border-r pr-6">
-          <p className="font-semibold text-center mb-3 text-sm">
+        <div className="col-span-1">
+          <p className="font-semibold text-center mb-3 text-[16px]">
             {format(selectedDate, 'MMMM yyyy')}
           </p>
           <Calendar
@@ -147,9 +147,10 @@ export default function BookingPage() {
             className="rounded-lg border dark:bg-gray-800/50 mx-auto text-sm"
           />
         </div>
+        <div className=''/>
 
         {/*------------------- Right side ------------------------*/}
-        <div className="col-span-2">
+        <div className="w-full">
 
           {/* Week Strip */}
           <div className="flex items-center gap-2 mb-6">
@@ -172,7 +173,7 @@ export default function BookingPage() {
                     key={day.toISOString()}
                     onClick={() => handleSelectDate(day)}
                     disabled={disabled}
-                    className={`flex flex-col items-center flex-1 py-2 rounded-xl border text-xs transition
+                    className={`flex flex-col items-center flex-1 py-2 rounded-md border text-xs transition
                       ${isActive
                         ? 'bg-blue-600 text-white border-blue-600'
                         : disabled
@@ -180,7 +181,7 @@ export default function BookingPage() {
                           : 'hover:bg-gray-50 dark:hover:bg-gray-800 border-gray-200 dark:border-gray-700'
                       }`}
                   >
-                    <span className="uppercase">{format(day, 'eee')}</span>
+                    <span className="uppercase px-1">{format(day, 'eee')}</span>
                     <span className="text-lg font-semibold">{format(day, 'd')}</span>
                   </button>
                 );
