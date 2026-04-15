@@ -15,7 +15,11 @@ const ovo = Ovo({
 export const metadata = {
   title: "Edward Morhe's Portfolio",
   description: "Edward Morhe - Software Engineer",
-  viewport: "width=device-width,initial-scale=1nb",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {

@@ -54,7 +54,7 @@ const Work = ({ isDarkmode }) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-6 justify-center dark:text-black max-w-5xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-6 justify-center dark:text-black max-w-4xl mx-auto"
       >
         {visibleProjects.map((project) => (
           <MotionLink
