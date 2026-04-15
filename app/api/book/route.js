@@ -1,6 +1,17 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const DEFAULT_COACH_EMAIL = "edwardmorhe777@gmail.com";
+const DEFAULT_FROM_EMAIL = "onboarding@resend.dev";
+
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("Missing RESEND_API_KEY");
+  }
+
+  return new Resend(apiKey);
+}
 
 function generateMeetLink() {
   const rand = () => Math.random().toString(36).slice(2, 5);
@@ -11,12 +22,23 @@ export async function POST(req) {
   try {
     const { date, slot, userEmail, coachEmail } = await req.json();
 
+    if (!date || !slot || !userEmail) {
+      return Response.json(
+        { error: "Missing required booking details" },
+        { status: 400 },
+      );
+    }
+
+    const resend = getResendClient();
     const meetLink = generateMeetLink();
     const formattedDate = new Date(date).toDateString();
+    const recipientCoachEmail = coachEmail || DEFAULT_COACH_EMAIL;
+    const fromEmail = process.env.RESEND_FROM_EMAIL || DEFAULT_FROM_EMAIL;
 
     // send to user
     await resend.emails.send({
-      from: `Edward the Coach ${coachEmail}`,
+      from: `Portfolio Booking <${fromEmail}>`,
+      replyTo: recipientCoachEmail,
       to: userEmail,
       subject: "Your Session is Confirmed",
       html: `
@@ -29,8 +51,9 @@ export async function POST(req) {
 
     // send to coach
     await resend.emails.send({
-      from: `Booking from Your Client ${userEmail}`,
-      to: coachEmail,
+      from: `Portfolio Booking <${fromEmail}>`,
+      replyTo: userEmail,
+      to: recipientCoachEmail,
       subject: "New Booking",
       html: `
         <h2>New Session Booked</h2>
@@ -42,6 +65,9 @@ export async function POST(req) {
     return Response.json({ meetLink });
   } catch (error) {
     console.error(error);
-    return Response.json({ error: "Failed to send email" }, { status: 500 });
+    return Response.json(
+      { error: error.message || "Failed to send email" },
+      { status: 500 },
+    );
   }
 }
