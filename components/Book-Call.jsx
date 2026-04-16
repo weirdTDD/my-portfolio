@@ -300,7 +300,7 @@ export default function BookingPage() {
                               ? "opacity-30 line-through cursor-not-allowed border-gray-200"
                               : selectedSlot === time
                                 ? "bg-blue-600 text-white border-blue-600"
-                                : "hover:bg-blue-50 hover:border-blue-300 border-gray-200"
+                                : "hover:bg-white/20 hover:border-blue-200 border-gray-200"
                           }`}
                       >
                         {time}

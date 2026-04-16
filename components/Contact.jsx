@@ -39,7 +39,7 @@ const Contact = () => {
     whileInView={{opacity: 1}}
     transition={{duration: 1}}
     >
-      <div id='contact' className='max-w-6xl mx-auto px-[12%] py-10 scroll-mt-20 bg-none bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none' >
+      <div id='contact' className='max-w-4xl mx-auto px-6 py-10 scroll-mt-20 bg-none bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none' >
         <motion.h4 
         
         initial={{y: -20, opacity: 0}}
@@ -48,18 +48,22 @@ const Contact = () => {
         className='text-center mb-2 text-lg font-Ovo'>
         Lets Connect!
       </motion.h4>
-      <motion.h2 
-      
-      initial={{y: -20, opacity: 0}}
-      whileInView={{y: 0, opacity: 1}}
-      transition={{ delay: 0.5, duration: 0.5}}
-      className='text-center text-5xl font-Ovo'>Get in touch </motion.h2>
-      <motion.p 
-        
+
+      <motion.h2    
+        initial={{y: -20, opacity: 0}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{ delay: 0.5, duration: 0.5}}
+        className='text-center text-5xl font-Ovo'
+      >
+        Get in touch 
+      </motion.h2>
+       
+       <motion.p 
           initial={{y: -20, opacity: 0}}
           whileInView={{y: 0, opacity: 1}}
           transition={{ delay: 0.7, duration: 0.5}}
-          className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'>
+          className='mb-12 mt-5 font-Ovo max-w-2xl mx-auto text-center'
+        >
           I'd love to hear from you! If you have questions, comments, or feedback,<br/> kindly use the form below.
         </motion.p>
 
@@ -77,14 +81,16 @@ const Contact = () => {
                 initial={{x: -50, opacity: 0}}
                 whileInView={{x: 0, opacity: 1}}
                 transition={{ delay: 1, duration: 0.3}}
-                type='text' placeholder='Enter your name' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950!  dark:border-white/20' name='name'/>
+                type='text' placeholder='Enter your name' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950!  dark:border-white/20' name='name'
+              />
                   
               <motion.input 
               
                 initial={{x: 50, opacity: 0}}
                 whileInView={{x: 0, opacity: 1}}
                 transition={{ delay: 1.2, duration: 0.3}}
-              type='email' placeholder='Enter your email' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950!  dark:border-white/20'name='email'/>
+                type='email' placeholder='Enter your email' required className='flex-1 p-3 outline-none border-[0.5] border-gray-400 rounded-md bg-white dark:bg-darkHover/30  dark:bg-gray-800/50! dark:text-gray-50! text-gray-950!  dark:border-white/20'name='email'
+              />
               
           </div>
           

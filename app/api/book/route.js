@@ -37,7 +37,7 @@ export async function POST(req) {
 
     // send to user
     await resend.emails.send({
-      from: `Portfolio Booking <${fromEmail}>`,
+      from: `Portfolio Booking <${coachEmail || fromEmail}>`,
       replyTo: recipientCoachEmail,
       to: userEmail,
       subject: "Your Session is Confirmed",
@@ -51,14 +51,15 @@ export async function POST(req) {
 
     // send to coach
     await resend.emails.send({
-      from: `Portfolio Booking <${fromEmail}>`,
+      from: `Portfolio Booking <${userEmail}>`,
       replyTo: userEmail,
-      to: recipientCoachEmail,
+      to: coachEmail,
       subject: "New Booking",
       html: `
         <h2>New Session Booked</h2>
         <p>Date: ${formattedDate}</p>
         <p>Time: ${slot}</p>
+        <p><a href="${meetLink}">Join Meeting</a></p>
       `,
     });
 
